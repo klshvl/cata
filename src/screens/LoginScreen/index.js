@@ -2,6 +2,8 @@ import { useState } from "react";
 import { View, Image } from "react-native";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../util/firebaseConfig";
 
 import BottomText from "../../components/BottomText";
 import CustomButton from "../../components/CustomButton";
@@ -9,11 +11,13 @@ import DismissKeyboard from "../../components/DismissKeyboard";
 import ValidateInput from "../../components/ValidateInput";
 import { styles } from "./styles";
 import { loginSchema } from "../../validation/schema";
+import SignupModal from "../../components/SignupModal";
 
 const logo = require("../../../assets/images/cat.png");
 
 const LoginScreen = () => {
   const [hidePassword, setHidePassword] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const { control, handleSubmit, reset, watch } = useForm({
     defaultValues: {
@@ -25,14 +29,34 @@ const LoginScreen = () => {
   });
 
   const watchFields = watch(["emailAddress", "password"]);
+  const email = watchFields[0];
+  const password = watchFields[1];
+
+  const disabled = !watchFields.every(Boolean);
 
   const hidePasswordHandler = () => {
     setHidePassword(!hidePassword);
   };
 
-  const loginHandler = (data) => {
-    console.log(data);
-    reset();
+  const loginHandler = async (data) => {
+    try {
+      console.log(data);
+      reset();
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      if (userCredential.user) {
+        console.log("User logged in succesfully");
+      }
+    } catch (error) {
+      console.log("signup erros", error.code, error.message);
+    }
+  };
+
+  const signupHandler = () => {
+    setModalVisible(!modalVisible);
   };
 
   return (
@@ -43,9 +67,8 @@ const LoginScreen = () => {
           <ValidateInput
             control={control}
             name="emailAddress"
-            icon="email"
+            icon="mail"
             placeholder="Email Address"
-            style={styles.input}
           />
           <ValidateInput
             control={control}
@@ -54,15 +77,20 @@ const LoginScreen = () => {
             onPress={hidePasswordHandler}
             placeholder="Password"
             secureTextEntry={hidePassword}
-            style={styles.input}
           />
           <CustomButton
             title="Log in"
-            disable={!(watchFields[0] && watchFields[1])}
+            disable={disabled}
             onPress={handleSubmit(loginHandler)}
           />
         </View>
-        <BottomText />
+        <BottomText onPress={signupHandler} />
+        <SignupModal
+          passwordIcon={hidePassword ? "eye-off" : "eye"}
+          secureTextEntry={hidePassword}
+          visible={modalVisible}
+          onPress={signupHandler}
+        />
       </View>
     </DismissKeyboard>
   );

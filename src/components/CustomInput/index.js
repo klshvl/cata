@@ -1,5 +1,5 @@
 import { Pressable, TextInput, View, Text } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 import { styles } from "./styles";
 import { defaultStyles } from "../../config/defaultStyles";
@@ -17,7 +17,7 @@ const CustomInput = ({
       <View style={[styles.textInputContainer, style]}>
         {icon && (
           <Pressable onPress={onPress}>
-            <MaterialCommunityIcons
+            <Ionicons
               color={defaultStyles.colorPallete.primary}
               name={icon}
               size={20}

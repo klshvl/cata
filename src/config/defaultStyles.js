@@ -8,7 +8,11 @@ export const defaultStyles = {
   },
   fonts: {
     primary: "Poppins-Regular",
-    size: 15,
+    size: 16,
+    large: 24,
     errorMsg: 10,
+  },
+  screen: {
+    screenPadding: 16,
   },
 };

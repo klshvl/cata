@@ -1,10 +1,11 @@
 import { StyleSheet, Dimensions } from "react-native";
 
 const { height } = Dimensions.get("window");
+import { defaultStyles } from "../../config/defaultStyles";
 
 export const styles = StyleSheet.create({
   rootContainer: {
-    paddingHorizontal: 16,
+    paddingHorizontal: defaultStyles.screen.screenPadding,
     alignItems: "center",
     height: "100%",
   },
