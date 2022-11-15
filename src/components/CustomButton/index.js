@@ -3,7 +3,7 @@ import { Pressable, Text } from "react-native";
 
 import { getStyles } from "./styles";
 
-const CustomButton = ({ disable, onPress, style, title }) => {
+const CustomButton = ({ customStyle, disable, onPress, style, title }) => {
   const styles = getStyles(disable);
 
   return (
@@ -13,7 +13,7 @@ const CustomButton = ({ disable, onPress, style, title }) => {
       style={({ pressed }) =>
         pressed
           ? [styles.btnContainer, styles.pressed, style]
-          : styles.btnContainer
+          : [styles.btnContainer, customStyle]
       }
     >
       <Text style={styles.button}>{title}</Text>

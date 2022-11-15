@@ -2,10 +2,11 @@ import { View, Text, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { styles } from "./styles";
+import ListCard from "../ListCard";
 
 const MyCampaignsList = ({ item }) => {
   return (
-    <View style={styles.container}>
+    <ListCard style={styles.container}>
       <Text style={styles.c}>{item.c}</Text>
       <Text style={styles.time}>{item.time}</Text>
       <Image
@@ -25,7 +26,7 @@ const MyCampaignsList = ({ item }) => {
           <Ionicons name="arrow-forward-outline" size={24} color="purple" />
         </View>
       </View>
-    </View>
+    </ListCard>
   );
 };
 

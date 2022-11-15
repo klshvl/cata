@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Modal, Pressable, SafeAreaView, View, Text } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useForm } from "react-hook-form";
@@ -11,8 +12,11 @@ import { Ionicons } from "@expo/vector-icons";
 import DismissKeyboard from "../DismissKeyboard";
 import ValidateInput from "../ValidateInput";
 import { signupSchema } from "../../validation/schema";
+import { UsersContext } from "../../store/context/users-context";
 
 const SignupModal = ({ onPress, passwordIcon, secureTextEntry, visible }) => {
+  const { setUser } = useContext(UsersContext);
+
   const { control, handleSubmit, reset, watch } = useForm({
     defaultValues: {
       businessName: "",
@@ -46,6 +50,9 @@ const SignupModal = ({ onPress, passwordIcon, secureTextEntry, visible }) => {
         email,
         password
       );
+      if (userCredential.user) {
+        setUser(userCredential.user);
+      }
     } catch (error) {
       console.log("signup erros", error.code, error.message);
     }

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { View, Image } from "react-native";
+import { useState, useContext } from "react";
+import { View, Image, SafeAreaView } from "react-native";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -12,10 +12,13 @@ import ValidateInput from "../../components/ValidateInput";
 import { styles } from "./styles";
 import { loginSchema } from "../../validation/schema";
 import SignupModal from "../../components/SignupModal";
+import { UsersContext } from "../../store/context/users-context";
 
 const logo = require("../../../assets/images/cat.png");
 
 const LoginScreen = () => {
+  const { setUser } = useContext(UsersContext);
+
   const [hidePassword, setHidePassword] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -48,7 +51,7 @@ const LoginScreen = () => {
         password
       );
       if (userCredential.user) {
-        console.log("User logged in succesfully");
+        setUser(userCredential.user);
       }
     } catch (error) {
       console.log("signup erros", error.code, error.message);
@@ -60,39 +63,41 @@ const LoginScreen = () => {
   };
 
   return (
-    <DismissKeyboard>
-      <View style={styles.rootContainer}>
-        <Image style={styles.image} source={logo} />
-        <View style={styles.container}>
-          <ValidateInput
-            control={control}
-            name="emailAddress"
-            icon="mail"
-            placeholder="Email Address"
-          />
-          <ValidateInput
-            control={control}
-            name="password"
-            icon={hidePassword ? "eye-off" : "eye"}
-            onPress={hidePasswordHandler}
-            placeholder="Password"
+    <SafeAreaView>
+      <DismissKeyboard>
+        <View style={styles.rootContainer}>
+          <Image style={styles.image} source={logo} />
+          <View style={styles.container}>
+            <ValidateInput
+              control={control}
+              name="emailAddress"
+              icon="mail"
+              placeholder="Email Address"
+            />
+            <ValidateInput
+              control={control}
+              name="password"
+              icon={hidePassword ? "eye-off" : "eye"}
+              onPress={hidePasswordHandler}
+              placeholder="Password"
+              secureTextEntry={hidePassword}
+            />
+            <CustomButton
+              title="Log in"
+              disable={disabled}
+              onPress={handleSubmit(loginHandler)}
+            />
+          </View>
+          <BottomText onPress={signupHandler} />
+          <SignupModal
+            passwordIcon={hidePassword ? "eye-off" : "eye"}
             secureTextEntry={hidePassword}
-          />
-          <CustomButton
-            title="Log in"
-            disable={disabled}
-            onPress={handleSubmit(loginHandler)}
+            visible={modalVisible}
+            onPress={signupHandler}
           />
         </View>
-        <BottomText onPress={signupHandler} />
-        <SignupModal
-          passwordIcon={hidePassword ? "eye-off" : "eye"}
-          secureTextEntry={hidePassword}
-          visible={modalVisible}
-          onPress={signupHandler}
-        />
-      </View>
-    </DismissKeyboard>
+      </DismissKeyboard>
+    </SafeAreaView>
   );
 };
 

@@ -1,20 +1,13 @@
 import { StyleSheet } from "react-native";
 
+import { defaultStyles } from "../../../config/defaultStyles";
+
 export const styles = StyleSheet.create({
   container: {
-    padding: 16,
-    backgroundColor: "#FBFBFB",
     marginBottom: 15,
-    borderWidth: 1,
-    borderRadius: 6,
-    borderColor: "#FBFBFB",
-    shadowColor: "#171717",
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
   },
   c: {
-    fontWeight: "bold",
+    fontWeight: defaultStyles.fonts.bold,
     marginBottom: 2,
   },
   time: {
@@ -42,6 +35,6 @@ export const styles = StyleSheet.create({
     color: "grey",
   },
   icon: {
-    marginLeft: 160,
+    marginLeft: "43%",
   },
 });

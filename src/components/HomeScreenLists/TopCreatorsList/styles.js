@@ -2,18 +2,10 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#FBFBFB",
     marginRight: 10,
     alignItems: "center",
     width: 150,
     height: 178,
-    borderWidth: 1,
-    borderRadius: 6,
-    borderColor: "#FBFBFB",
-    shadowColor: "#171717",
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
   },
   image: {
     width: 40,

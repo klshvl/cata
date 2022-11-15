@@ -1,4 +1,5 @@
-import { View, ScrollView, SectionList } from "react-native";
+import { View, SectionList } from "react-native";
+
 import ListView from "../../../components/HomeScreenLists/ListView";
 import SectionTitle from "../../../components/SectionTitle";
 
