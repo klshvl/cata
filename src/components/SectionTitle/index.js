@@ -1,6 +1,7 @@
 import { Pressable, Text, TouchableOpacity, View } from "react-native";
 
 import { getStyles } from "./styles";
+import CustomButton from "../CustomButton";
 
 const SectionTitle = ({ data, options, pressed }) => {
   const styles = getStyles(pressed);
@@ -14,33 +15,24 @@ const SectionTitle = ({ data, options, pressed }) => {
       )}
       {data.sectionTitle === "Insights" && (
         <View style={styles.btnsContainer}>
-          <Pressable
-            style={({ pressed }) =>
-              pressed
-                ? [styles.insightsBtns, styles.pressed]
-                : styles.insightsBtns
-            }
-          >
-            <Text style={styles.insightsBtn}>{options[0]}</Text>
-          </Pressable>
-          <Pressable
-            style={({ pressed }) =>
-              pressed
-                ? [styles.insightsBtns, styles.pressed]
-                : styles.insightsBtns
-            }
-          >
-            <Text style={styles.insightsBtn}>{options[1]}</Text>
-          </Pressable>
-          <Pressable
-            style={({ pressed }) =>
-              pressed
-                ? [styles.insightsBtns, styles.pressed]
-                : styles.insightsBtns
-            }
-          >
-            <Text style={styles.insightsBtn}>{options[2]}</Text>
-          </Pressable>
+          <CustomButton
+            title={options[0]}
+            btnContainerStyle={styles.insightsBtns}
+            btnPressedStyle={styles.pressed}
+            btnTextStyle={styles.insightsBtn}
+          />
+          <CustomButton
+            title={options[1]}
+            btnContainerStyle={styles.insightsBtns}
+            btnPressedStyle={styles.pressed}
+            btnTextStyle={styles.insightsBtn}
+          />
+          <CustomButton
+            title={options[2]}
+            btnContainerStyle={styles.insightsBtns}
+            btnPressedStyle={styles.pressed}
+            btnTextStyle={styles.insightsBtn}
+          />
         </View>
       )}
     </View>

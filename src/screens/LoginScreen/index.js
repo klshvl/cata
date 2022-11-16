@@ -86,6 +86,9 @@ const LoginScreen = () => {
               title="Log in"
               disable={disabled}
               onPress={handleSubmit(loginHandler)}
+              btnContainerStyle={styles.btnContainerStyle}
+              btnPressedStyle={styles.btnPressedStyle}
+              btnTextStyle={styles.btnTextStyle}
             />
           </View>
           <BottomText onPress={signupHandler} />

@@ -20,4 +20,17 @@ export const styles = StyleSheet.create({
   image: {
     height: height * 0.35,
   },
+  btnContainerStyle: {
+    backgroundColor: defaultStyles.colorPallete.primary,
+    borderRadius: 8,
+  },
+  btnPressedStyle: {
+    opacity: 0.8,
+  },
+  btnTextStyle: {
+    color: defaultStyles.colorPallete.white,
+    paddingVertical: 10,
+    textAlign: "center",
+    fontFamily: defaultStyles.fonts.primary,
+  },
 });

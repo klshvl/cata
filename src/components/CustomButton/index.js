@@ -3,20 +3,39 @@ import { Pressable, Text } from "react-native";
 
 import { getStyles } from "./styles";
 
-const CustomButton = ({ customStyle, disable, onPress, style, title }) => {
+const CustomButton = ({
+  btnContainerStyle,
+  btnPressedStyle,
+  btnTextStyle,
+  disable,
+  onPress,
+  title,
+}) => {
   const styles = getStyles(disable);
 
   return (
+    // <Pressable
+    //   disabled={disable}
+    //   onPress={onPress}
+    //   style={
+    //     ({ pressed }) =>
+    //       pressed
+    //         ? [styles.btnContainer, styles.pressed, style] //btnPressedStyle
+    //         : [styles.btnContainer, customStyle] //btnContainerStyle
+    //   } //btnTextStyle
+    // >
+    //   <Text style={styles.button}>{title}</Text>
+    // </Pressable>
     <Pressable
       disabled={disable}
       onPress={onPress}
       style={({ pressed }) =>
         pressed
-          ? [styles.btnContainer, styles.pressed, style]
-          : [styles.btnContainer, customStyle]
+          ? [btnContainerStyle, btnPressedStyle]
+          : [btnContainerStyle, styles.disable]
       }
     >
-      <Text style={styles.button}>{title}</Text>
+      <Text style={btnTextStyle}>{title}</Text>
     </Pressable>
   );
 };

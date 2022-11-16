@@ -2,7 +2,6 @@ import { useFonts } from "expo-font";
 import UsersContextProvider from "./src/store/context/users-context";
 
 import Navigation from "./src/navigation/Navigation";
-import LoginScreen from "./src/screens/LoginScreen";
 
 export default function App() {
   const [isFontLoaded] = useFonts({
@@ -15,6 +14,5 @@ export default function App() {
     <UsersContextProvider>
       <Navigation />
     </UsersContextProvider>
-    // <LoginScreen />
   );
 }

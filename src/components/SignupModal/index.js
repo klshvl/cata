@@ -120,6 +120,9 @@ const SignupModal = ({ onPress, passwordIcon, secureTextEntry, visible }) => {
                 disable={disabled}
                 onPress={handleSubmit(signupHandler)}
                 title="Sign Up"
+                btnContainerStyle={styles.btnContainerStyle}
+                btnPressedStyle={styles.btnPressedStyle}
+                btnTextStyle={styles.btnTextStyle}
               />
             </View>
           </View>
