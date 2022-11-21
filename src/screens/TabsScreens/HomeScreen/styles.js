@@ -6,13 +6,8 @@ export const styles = StyleSheet.create({
     backgroundColor: "#FBFBFB",
     padding: 16,
   },
-  containerVer: {
+  container: {
     flex: 1,
-    paddingHorizontal: 10,
-  },
-  containerHor: {
-    flex: 1,
-    padding: 10,
   },
   margin: {
     marginBottom: 48,

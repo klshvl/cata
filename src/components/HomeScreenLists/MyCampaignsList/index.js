@@ -1,18 +1,16 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ScrollView, FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { styles } from "./styles";
 import ListCard from "../ListCard";
+import CampaignProfiles from "../../CampaignsProfiles";
 
 const MyCampaignsList = ({ item }) => {
   return (
     <ListCard style={styles.container}>
       <Text style={styles.c}>{item.c}</Text>
       <Text style={styles.time}>{item.time}</Text>
-      <Image
-        style={styles.image}
-        source={require("../../../../assets/images/profile.png")}
-      />
+      <CampaignProfiles imageArr={item.imgSource} />
       <View style={styles.stats}>
         <View style={styles.statsLeft}>
           <Text style={styles.numbers}>{item.creators}</Text>

@@ -14,12 +14,6 @@ export const styles = StyleSheet.create({
     color: "grey",
     marginBottom: 24,
   },
-  image: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginBottom: 33,
-  },
   stats: {
     flexDirection: "row",
     alignItems: "center",

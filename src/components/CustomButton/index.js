@@ -35,7 +35,7 @@ const CustomButton = ({
           : [btnContainerStyle, styles.disable]
       }
     >
-      <Text style={btnTextStyle}>{title}</Text>
+      <Text style={[btnTextStyle]}>{title}</Text>
     </Pressable>
   );
 };
