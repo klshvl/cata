@@ -1,7 +1,7 @@
 import { Text, Image } from "react-native";
 
 import { styles } from "./styles";
-import ListCard from "../ListCard";
+import ListCard from "../../ListCard";
 
 const TopCreatorsList = ({ item }) => {
   return (
@@ -12,7 +12,7 @@ const TopCreatorsList = ({ item }) => {
       />
       <Text style={styles.name}>{item.name}</Text>
       <Text style={styles.social}>{item.social}</Text>
-      <Text style={styles.followers}>{item.followers}</Text>
+      <Text style={styles.followers}>{item.followers} Followers</Text>
     </ListCard>
   );
 };

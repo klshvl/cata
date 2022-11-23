@@ -80,24 +80,24 @@ export const DATA = [
     sectionTitle: "Top creators",
     data: [
       [
-        { name: "Elene", social: "@social.social", followers: "14K followers" },
-        { name: "Xio", social: "@social.social", followers: "14K followers" },
-        { name: "Tako", social: "@social.social", followers: "14K followers" },
+        { name: "Elene", social: "@social.social", followers: "14K" },
+        { name: "Xio", social: "@social.social", followers: "14K" },
+        { name: "Tako", social: "@social.social", followers: "14K" },
         {
           name: "Leluka",
           social: "@social.social",
-          followers: "14K followers",
+          followers: "14K",
         },
         {
           name: "Lukaluka",
           social: "@social.social",
-          followers: "14K followers",
+          followers: "14K",
         },
-        { name: "Dima", social: "@social.social", followers: "14K followers" },
+        { name: "Dima", social: "@social.social", followers: "14K" },
         {
           name: "Lashuna",
           social: "@social.social",
-          followers: "14K followers",
+          followers: "14K",
         },
       ],
     ],

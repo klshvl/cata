@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
@@ -13,7 +13,7 @@ import { UsersContext } from "../store/context/users-context";
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
-  const { setUser } = useContext(UsersContext);
+  const { setUser, listView, setListView } = useContext(UsersContext);
 
   const icons = (size = 20, name, style, onPress, color) => {
     return (
@@ -25,10 +25,6 @@ const Tabs = () => {
         color={color}
       />
     );
-  };
-
-  const logoutHandler = () => {
-    setUser(false);
   };
 
   const headerHandler = () => {
@@ -45,20 +41,29 @@ const Tabs = () => {
     );
   };
 
+  const logoutHandler = () => {
+    setUser(false);
+  };
+
+  const listViewHandler = () => {
+    if (listView === "list") {
+      setListView("column");
+    } else {
+      setListView("list");
+    }
+  };
+
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          headerTitle: "",
-          headerRight: headerHandler,
-          headerLeft: () =>
-            icons(30, "log-out-outline", { marginLeft: 20 }, logoutHandler),
-        }}
-      >
+      <Tab.Navigator>
         <Tab.Screen
           name="Home"
           component={HomeScreen}
           options={{
+            headerTitle: "",
+            headerRight: headerHandler,
+            headerLeft: () =>
+              icons(30, "log-out-outline", { marginLeft: 20 }, logoutHandler),
             tabBarIcon: ({ size, color }) =>
               icons(size, "home-outline", null, null, color),
           }}
@@ -69,6 +74,29 @@ const Tabs = () => {
           options={{
             tabBarIcon: ({ size, color }) =>
               icons(size, "people-outline", null, null, color),
+            headerTitle: "",
+            headerLeft: () => (
+              <Text
+                style={{ fontSize: 25, fontWeight: "bold", marginLeft: 16 }}
+              >
+                Creators
+              </Text>
+            ),
+            headerRight: () => {
+              return (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    marginRight: 20,
+                  }}
+                >
+                  {icons(25, "funnel-outline", { marginRight: 20 })}
+                  {listView === "list"
+                    ? icons(25, "grid-outline", null, listViewHandler)
+                    : icons(25, "list-outline", null, listViewHandler)}
+                </View>
+              );
+            },
           }}
         />
         <Tab.Screen

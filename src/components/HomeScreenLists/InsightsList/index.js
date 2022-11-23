@@ -1,7 +1,7 @@
 import { Text, Image } from "react-native";
 
 import { styles } from "./styles";
-import ListCard from "../ListCard";
+import ListCard from "../../ListCard";
 
 const InsightsList = ({ item }) => {
   return (

@@ -1,8 +1,8 @@
-import { View, Text, Image, ScrollView, FlatList } from "react-native";
+import { View, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { styles } from "./styles";
-import ListCard from "../ListCard";
+import ListCard from "../../ListCard";
 import CampaignProfiles from "../../CampaignsProfiles";
 
 const MyCampaignsList = ({ item }) => {

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { defaultStyles } from "../../../config/defaultStyles";
+import { defaultStyles } from "../../config/defaultStyles";
 
 export const styles = StyleSheet.create({
   card: {
